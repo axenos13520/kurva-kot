@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { onKeyDownSubscribe } from "../app/controlSlice";
+import { onClickSubscribe, onKeyDownSubscribe } from "../app/controlSlice";
 import { store } from "../app/store";
 import { pauseGame } from "../app/gameSlice";
 
@@ -64,6 +64,13 @@ export default function KurvaKot() {
             transform: "translateX(-300%) scale(30)",
           });
         }
+      })
+    );
+
+    dispatch(
+      onClickSubscribe((e: MouseEvent) => {
+        if (e.button === 0 && !store.getState().game.gamePaused)
+          deltaY = -jumpStrength;
       })
     );
 

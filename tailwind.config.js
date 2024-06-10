@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "kurva-kot": 'url("/src/assets/kurva-kot.png")',
+        "kurva-kot": "url('/src/assets/kurva-kot.png')",
+        background: "url('/src/assets/background.png')",
       },
     },
   },
