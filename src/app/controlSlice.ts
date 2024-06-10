@@ -17,12 +17,12 @@ const controlSlice = createSlice({
     onKeyDownSubscribe(state, payload: PayloadAction<Function>) {
       state.onKeyDownFunctions = [...state.onKeyDownFunctions, payload.payload];
     },
-    onClickSubscrive(state, payload: PayloadAction<Function>) {
+    onClickSubscribe(state, payload: PayloadAction<Function>) {
       state.onClickFunctions = [...state.onClickFunctions, payload.payload];
     },
   },
 });
 
-export const { onKeyDownSubscribe } = controlSlice.actions;
+export const { onKeyDownSubscribe, onClickSubscribe } = controlSlice.actions;
 
 export default controlSlice;
