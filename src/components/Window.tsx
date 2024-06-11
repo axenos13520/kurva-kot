@@ -25,10 +25,11 @@ export default function Window() {
     currentWindowSize = windowSize;
 
     const bgWidth = 2 * windowSize[1];
+    console.log(Math.ceil(windowSize[0] / bgWidth) + " * " + bgWidth);
     setTest(bgWidth);
 
-    backgroundShiftTarget =
-      Math.ceil(windowSize[0] / bgWidth) * bgWidth - 20 * (windowSize[1] / 600);
+    backgroundShiftTarget = Math.ceil(windowSize[0] / bgWidth) * bgWidth;
+    console.log(backgroundShiftTarget);
   }, [windowSize]);
 
   async function Update() {
@@ -36,7 +37,7 @@ export default function Window() {
       setBackgroundShift((prevShift) => {
         return prevShift >= backgroundShiftTarget
           ? 0
-          : prevShift + (0 * currentWindowSize[1]) / 600;
+          : prevShift + (2 * currentWindowSize[1]) / 600;
       });
 
       await delay(deltaTime);
@@ -76,20 +77,20 @@ export default function Window() {
 
   return (
     <div
-      className="relative border-2 border-red-500"
+      className="relative border-0 border-red-500"
       style={{ width: windowSize[0], height: windowSize[1] }}
     >
       <div
-        className="absolute w-[300%] h-full bg-background bg-contain bg-no-repeat -z-10"
+        className="absolute w-[300%] h-full bg-background bg-contain bg-repeat-x -z-10"
         style={{
           left: `${-backgroundShift}px`,
           imageRendering: "pixelated",
         }}
       ></div>
-      <div
+      {/* <div
         className="absolute h-full border-red-500 border-2"
         style={{ width: `${test}px` }}
-      ></div>
+      ></div> */}
       <KurvaKot />
     </div>
   );

@@ -12,7 +12,7 @@ let gamePaused: boolean = false;
 
 export default function KurvaKot() {
   const [additionalStyles, setAdditionalStyles] = useState({});
-  const [position, setPosition] = useState([5, 0]);
+  const [position, setPosition] = useState([5, 80]);
 
   const sizeDivider = 3000;
 
@@ -34,14 +34,17 @@ export default function KurvaKot() {
   const jumpStrength = 0.6;
 
   async function Update() {
+    let a = 5;
+
     while (true) {
       if (!gamePaused) {
-        setPosition((prevPosition) => [
-          prevPosition[0],
-          prevPosition[1] + deltaY,
-        ]);
+        // setPosition((prevPosition) => [
+        //   prevPosition[0],
+        //   prevPosition[1] + deltaY,
+        // ]);
 
-        deltaY += 0.3 * deltaTime;
+        deltaY += a * deltaTime;
+        a += 0.01;
       }
 
       await delay(deltaTime);
